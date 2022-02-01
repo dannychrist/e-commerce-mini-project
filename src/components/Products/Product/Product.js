@@ -8,7 +8,6 @@ import {
   IconButton,
 } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
-import { classes } from 'istanbul-lib-coverage';
 
 const Product = ({ product }) => {
   return (
