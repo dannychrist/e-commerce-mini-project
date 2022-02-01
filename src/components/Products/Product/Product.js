@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
 
-import useStyles from './styles';
+import useStyles from './productStyles';
 
 const Product = ({ product }) => {
   const classes = useStyles();
