@@ -50,6 +50,7 @@ function App() {
         newOrder
       );
       setOrder(incomingOrder);
+      console.log('refresh');
       refreshCart();
     } catch (error) {
       setErrorMessage(error.data.error.message);
@@ -91,7 +92,18 @@ function App() {
               />
             }
           />
-          <Route exact path='/checkout' element={<Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />} />
+          <Route
+            exact
+            path='/checkout'
+            element={
+              <Checkout
+                cart={cart}
+                order={order}
+                onCaptureCheckout={handleCaptureCheckout}
+                error={errorMessage}
+              />
+            }
+          />
         </Routes>
       </div>
     </Router>

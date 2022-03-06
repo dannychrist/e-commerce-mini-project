@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Button, Divider, CardActionArea } from '@material-ui/core';
+import { Typography, Button, Divider } from '@material-ui/core';
 import {
   Elements,
   CardElement,
@@ -16,13 +16,13 @@ const PaymentForm = ({
   shippingData,
   backStep,
   onCaptureCheckout,
-  nextStep
+  nextStep,
 }) => {
   const handleSubmit = async (e, elements, stripe) => {
     e.preventDefault();
     if (!stripe || !elements) return;
 
-    const cardElement = e.getElement(CardElement);
+    const cardElement = elements.getElement(CardElement);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
@@ -30,7 +30,7 @@ const PaymentForm = ({
     });
 
     if (error) {
-      console.log(error);
+      console.log('[error]', error);
     } else {
       const orderData = {
         line_items: checkoutToken.live.line_items,
@@ -40,14 +40,14 @@ const PaymentForm = ({
           email: shippingData.email,
         },
         shipping: {
-          name: 'Primary',
+          name: 'International',
           street: shippingData.address1,
           town_city: shippingData.city,
           county_state: shippingData.shippingSubdivision,
           postal_zip_code: shippingData.zip,
           country: shippingData.shippingCountry,
         },
-        fullfillment: { shipping_method: shippingData.shippingOption },
+        fulfillment: { shipping_method: shippingData.shippingOption },
         payment: {
           gateway: 'stripe',
           stripe: {
@@ -55,6 +55,7 @@ const PaymentForm = ({
           },
         },
       };
+      console.log(orderData);
       onCaptureCheckout(checkoutToken.id, orderData);
       nextStep();
     }

@@ -10,7 +10,7 @@ import {
 
 import useStyles from './CartItemStyles';
 
-const CartItem = ({ item, onUpdateCartQty, handleRemoveFromCart }) => {
+const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
   const classes = useStyles();
   console.log(item);
   return (
@@ -48,7 +48,7 @@ const CartItem = ({ item, onUpdateCartQty, handleRemoveFromCart }) => {
           variant='contained'
           type='button'
           color='secondary'
-          onClick={() => handleRemoveFromCart(item.id)}
+          onClick={() => onRemoveFromCart(item.id)}
         >
           Remove
         </Button>
