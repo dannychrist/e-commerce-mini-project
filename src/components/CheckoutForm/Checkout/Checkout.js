@@ -22,9 +22,6 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const [shippingData, setShippingData] = useState({});
   const classes = useStyles();
 
-  console.log(shippingData);
-  console.log(checkoutToken);
-
   useEffect(() => {
     const generateToken = async () => {
       try {

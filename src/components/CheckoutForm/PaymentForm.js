@@ -55,7 +55,6 @@ const PaymentForm = ({
           },
         },
       };
-      console.log(orderData);
       onCaptureCheckout(checkoutToken.id, orderData);
       nextStep();
     }

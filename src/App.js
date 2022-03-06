@@ -50,7 +50,6 @@ function App() {
         newOrder
       );
       setOrder(incomingOrder);
-      console.log('refresh');
       refreshCart();
     } catch (error) {
       setErrorMessage(error.data.error.message);
