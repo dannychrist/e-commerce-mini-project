@@ -8,6 +8,7 @@ import {
   CircularProgress,
   Divider,
   Button,
+  CssBaseline
 } from '@material-ui/core';
 import { commerce } from '../../../lib/commerce';
 import { Link, useNavigate } from 'react-router-dom';
@@ -73,15 +74,15 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
       </div>
     );
 
-  if (error) {
-    <>
-      <Typography variant='h5'>Error: {error}</Typography>
-      <br />
-      <Button component={Link} variant='outlined' type='button' to='/'>
-        Back to home
-      </Button>
-    </>;
-  }
+    if (error) {
+      Confirmation = () => (
+        <>
+          <Typography variant="h5">Error: {error}</Typography>
+          <br />
+          <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
+        </>
+      );
+    }
 
   const Form = () =>
     activeStep === 0 ? (
@@ -98,6 +99,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
 
   return (
     <>
+    <CssBaseline />
       <div className={classes.toolbar} />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
